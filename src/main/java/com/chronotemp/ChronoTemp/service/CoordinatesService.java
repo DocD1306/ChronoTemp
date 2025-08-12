@@ -27,7 +27,6 @@ public class CoordinatesService {
     public static List<Double> requestCoordinates(String city){
         List<Double> coordinates = new ArrayList<>();
 
-        String request = insertCityName(city);
 
         return coordinates;
     }
