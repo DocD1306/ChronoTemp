@@ -9,22 +9,13 @@ import java.util.List;
 public class CoordinatesService {
 
     private static final String BASE_API_URL = "https://nominatim.openstreetmap.org/search?";
-    private static final String CITY_REQUEST_PART = "p=%s&format=json&limit1";
+    private static final String CITY_REQUEST_PART = "q=%s&format=json&limit1";
 
     /**
      * Void constructor
      */
     public CoordinatesService (){
 
-    }
-
-    /**
-     * This method inserts the city name into the request URL and returns the result
-     * @param city City name to be put in the URL
-     * @return String with the result of the insertion of the city into the request URL
-     */
-    public static String insertCityName(String city){
-        return BASE_API_URL + String.format(CITY_REQUEST_PART, city);
     }
 
     /**
