@@ -23,7 +23,7 @@ public class CoordinatesService {
      * @param city City name to be put in the URL
      * @return String with the result of the insertion of the city into the request URL
      */
-    public static String insertCity(String city){
+    public static String insertCityName(String city){
         return BASE_API_URL + String.format(CITY_REQUEST_PART, city);
     }
 
@@ -36,7 +36,7 @@ public class CoordinatesService {
     public static List<Double> requestCoordinates(String city){
         List<Double> coordinates = new ArrayList<>();
 
-        String request = insertCity(city);
+        String request = insertCityName(city);
 
         return coordinates;
     }
