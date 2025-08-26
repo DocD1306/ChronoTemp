@@ -33,5 +33,7 @@ build/
 .vscode/
 
 
-### Own ###
+### Own files ###
 out
+application-secret.properties
+
