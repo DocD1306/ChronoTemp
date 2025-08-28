@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * This class stores all the information related to a specific day of the year and a place.
  */
 @Entity
-@Table(name = "DayTemperature")
+@Table(name = "daytemperature")
 @Data
 public class DayTemperature {
 
@@ -18,19 +18,17 @@ public class DayTemperature {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String ciudad;
+    private String city;
 
-    private String pais;
+    private String country;
 
-    private double latitud;
-    private double longitud;
+    private double latitude;
+    private double longitude;
 
-    private LocalDate fecha;
+    // Date of the temperatures recorded
+    private LocalDate date;
 
-    private Double temperaturaMax;
-    private Double temperaturaMin;
-    private Double temperaturaMedia;
-
-    private LocalDateTime ultimaActualizacion;
+    private Double maxTemperature;
+    private Double minTemperature;
 
 }

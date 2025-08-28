@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface DayTemperatureRepository extends JpaRepository<DayTemperature, Long> {
 
     // This like the name describes, retrieves a DayTemperature for the input passed.
-    Optional<DayTemperature> findByCiudadAndPaisAndFecha(String ciudad, String pais, LocalDate fecha);
+    Optional<DayTemperature> findByCityAndCountryAndDate(String city, String country, LocalDate date);
 
 }

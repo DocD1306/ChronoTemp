@@ -1,22 +1,20 @@
 package com.chronotemp.ChronoTemp.service;
 
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * This service class is in charge of creating, sending and receiving the requests to the Nominatim API
  */
+@Service
+@Data
 public class CoordinatesService {
 
     private static final String BASE_API_URL = "https://nominatim.openstreetmap.org/search?";
     private static final String CITY_REQUEST_PART = "q=%s&format=json&limit1";
-
-    /**
-     * Void constructor
-     */
-    public CoordinatesService (){
-
-    }
 
     /**
      * This method creates a GET request to the Nominatim API to retrieve the coordinates
@@ -26,7 +24,6 @@ public class CoordinatesService {
      */
     public static List<Double> requestCoordinates(String city){
         List<Double> coordinates = new ArrayList<>();
-
 
         return coordinates;
     }

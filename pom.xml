@@ -58,13 +58,20 @@
 			<version>3.5.5</version>
 		</dependency>
 
-		<!--This is dependency is for simplifying the process of creating the getters, constructors, etc. for a class.-->
+		<!--This dependency is for simplifying the process of creating the getters, constructors, etc. for a class.-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.38</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!--This dependency is for doing HTTP requests with WebClient, a more modern option that provides reactive requests-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+		</dependency>
+
 
 	</dependencies>
 
