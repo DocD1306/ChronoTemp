@@ -10,6 +10,13 @@ public class TemperatureService {
 
     private final String exampleRequest = "https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=38.2653307&longitude=-0.6988391&start_date=2025-08-26&end_date=2025-08-26&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin";
 
+    /**
+     * Method that receives coordinates for a location and request the temperature information of those coordinates to
+     * the Open-Meteo API
+     * @param latitude Double Latitude
+     * @param longitude Double Longitude
+     * @return TemperatureResponseDTO
+     */
     public TemperatureResponseDTO getTemperatureByCoordinates(double latitude, double longitude){
         double minTemperature = 15;
         double maxTemperature = 30;
