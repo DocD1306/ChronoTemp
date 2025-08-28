@@ -1,5 +1,6 @@
 package com.chronotemp.ChronoTemp.controller;
 
+import com.chronotemp.ChronoTemp.dto.CoordinatesDTO;
 import com.chronotemp.ChronoTemp.dto.TemperatureRequestDTO;
 import com.chronotemp.ChronoTemp.dto.TemperatureResponseDTO;
 import com.chronotemp.ChronoTemp.service.CoordinatesService;
@@ -25,8 +26,30 @@ public class DayTemperatureController {
 
     @PostMapping("/by-city")
     public TemperatureResponseDTO getTemperature(@RequestBody TemperatureRequestDTO temperatureRequestDTO){
-        return temperatureService.getTemperatureByCoordinates(12,13);
+
+        CoordinatesDTO coordinatesDTO = coordinatesService.getCoordinates(temperatureRequestDTO.getCityName(),
+                temperatureRequestDTO.getCountryCode()).block();
+        return temperatureService.getTemperatureByCoordinates(coordinatesDTO.getLatitude(), coordinatesDTO.getLongitude());
 
     }
+
+    /*
+
+        This is a reactive alternative to the method above that doesn't block the thread
+
+        @PostMapping("/by-city")
+        public Mono<TemperatureResponseDTO> getTemperature(@RequestBody TemperatureRequestDTO temperatureRequestDTO) {
+        return coordinatesService.getCoordinates(
+                temperatureRequestDTO.getCityName(),
+                temperatureRequestDTO.getCountryCode()
+            )
+            .flatMap(coordinatesDTO ->
+                Mono.just(temperatureService.getTemperatureByCoordinates(
+                    coordinatesDTO.getLatitude(),
+                    coordinatesDTO.getLongitude()
+                ))
+            );
+        }
+     */
 
 }

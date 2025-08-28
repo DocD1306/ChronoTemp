@@ -1,7 +1,10 @@
 package com.chronotemp.ChronoTemp.service;
 
+import com.chronotemp.ChronoTemp.dto.CoordinatesDTO;
 import lombok.Data;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +16,37 @@ import java.util.List;
 @Data
 public class CoordinatesService {
 
-    private static final String BASE_API_URL = "https://nominatim.openstreetmap.org/search?";
+    private static final String BASE_URL = "https://nominatim.openstreetmap.org";
     private static final String CITY_REQUEST_PART = "q=%s&format=json&limit1";
 
-    /**
-     * This method creates a GET request to the Nominatim API to retrieve the coordinates
-     * of the city name that is passed through as a parameter and returns them in a List.
-     * @param city Name of the city which coordinates are wanted.
-     * @return List with the coordinates of the city as a Double
-     */
-    public static List<Double> requestCoordinates(String city){
-        List<Double> coordinates = new ArrayList<>();
+    private final WebClient webClient;
 
-        return coordinates;
+    public CoordinatesService(){
+        this.webClient = WebClient.builder()
+                .baseUrl(BASE_URL)
+                .defaultHeader("User-Agent", "ChronoTemp/0.1 (diegofjda2@gmail.com)")
+                .build();
     }
 
+    public Mono<CoordinatesDTO> getCoordinates(String city, String countryCode){
+        String query = city + ",\s" + countryCode;
+
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/search")
+                        .queryParam("q", query)
+                        .queryParam("format", "json")
+                        .queryParam("limit", 1)
+                        .build())
+                .retrieve()
+                .bodyToMono(CoordinatesDTO[].class)
+                .map(results -> {
+                    if(results.length > 0){
+                        return results[0];
+                    } else {
+                        return null;
+                    }
+                });
+    }
 
 }
