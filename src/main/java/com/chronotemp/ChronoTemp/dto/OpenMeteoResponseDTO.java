@@ -3,7 +3,6 @@ package com.chronotemp.ChronoTemp.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -13,8 +12,7 @@ import java.time.LocalDate;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class TemperatureResponseDTO {
+public class OpenMeteoResponseDTO {
 
     // This is a temporary structure, in the future it will be changed so that the object stores an array of DayTemperatures
     private String country;
@@ -22,7 +20,7 @@ public class TemperatureResponseDTO {
 
     private LocalDate date;
 
-    private double maxTemperature;
-    private double minTemperature;
+    @JsonProperty("daily")
+    private DailyOpenMeteoDTO dailyOpenMeteoDTO;
 
 }

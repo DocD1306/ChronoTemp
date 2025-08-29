@@ -16,8 +16,7 @@ import java.util.List;
 @Data
 public class CoordinatesService {
 
-    private static final String BASE_URL = "https://nominatim.openstreetmap.org";
-    private static final String CITY_REQUEST_PART = "q=%s&format=json&limit1";
+    private final String BASE_URL = "https://nominatim.openstreetmap.org";
 
     private final WebClient webClient;
 

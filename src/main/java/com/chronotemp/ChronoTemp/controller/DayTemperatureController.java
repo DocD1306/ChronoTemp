@@ -29,8 +29,13 @@ public class DayTemperatureController {
 
         CoordinatesDTO coordinatesDTO = coordinatesService.getCoordinates(temperatureRequestDTO.getCityName(),
                 temperatureRequestDTO.getCountryCode()).block();
-        return temperatureService.getTemperatureByCoordinates(coordinatesDTO.getLatitude(), coordinatesDTO.getLongitude());
-
+        TemperatureResponseDTO temperatureResponseDTO = temperatureService.getTemperatureByCoordinates(
+                coordinatesDTO.getLatitude(),
+                coordinatesDTO.getLongitude(),
+                temperatureRequestDTO.getCityName(),
+                temperatureRequestDTO.getCountryCode());
+        System.out.println(temperatureResponseDTO);
+        return temperatureResponseDTO;
     }
 
     /*
