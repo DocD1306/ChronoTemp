@@ -2,18 +2,13 @@ package com.chronotemp.ChronoTemp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
-@ToString
-public class TemperatureRequestDTO {
+public class DateRangeDTO {
 
-    private String city;
-    private String country;
-    private CoordinatesDTO coordinatesDTO;
     private LocalDate startDate;
     private LocalDate endDate;
 

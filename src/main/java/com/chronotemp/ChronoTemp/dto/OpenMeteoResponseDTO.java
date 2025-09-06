@@ -14,12 +14,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class OpenMeteoResponseDTO {
 
-    // This is a temporary structure, in the future it will be changed so that the object stores an array of DayTemperatures
-    private String country;
-    private String city;
-
-    private LocalDate date;
-
     @JsonProperty("daily")
     private DailyOpenMeteoDTO dailyOpenMeteoDTO;
 

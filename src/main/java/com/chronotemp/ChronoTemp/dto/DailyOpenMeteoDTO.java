@@ -12,7 +12,8 @@ import java.util.List;
 @Data
 public class DailyOpenMeteoDTO {
 
-    private List<String> time;
+    @JsonProperty("time")
+    private List<String> date;
 
     @JsonProperty("temperature_2m_max")
     private List<Double> temperatureMax;

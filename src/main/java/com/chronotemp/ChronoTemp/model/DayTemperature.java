@@ -10,7 +10,10 @@ import java.time.LocalDateTime;
  * This class stores all the information related to a specific day of the year and a place.
  */
 @Entity
-@Table(name = "daytemperature")
+@Table(
+        name = "daytemperature",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"city", "country", "date"})
+)
 @Data
 public class DayTemperature {
 

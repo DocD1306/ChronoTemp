@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * This class is the DTO that stores the information related with the temperatures
@@ -16,13 +17,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class TemperatureResponseDTO {
 
-    // This is a temporary structure, in the future it will be changed so that the object stores an array of DayTemperatures
     private String country;
     private String city;
 
-    private LocalDate date;
-
-    private double maxTemperature;
-    private double minTemperature;
+    private List<DayTemperatureDTO> temperatures;
 
 }

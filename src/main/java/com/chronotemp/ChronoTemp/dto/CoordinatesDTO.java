@@ -10,5 +10,13 @@ public class CoordinatesDTO {
     private double latitude;
     @JsonProperty("lon")
     private double longitude;
+    @JsonProperty("display_name")
+    private String country;
 
+    public void setCountry(String country){
+        String[] parts = country.split(",");
+        String countryName = parts[parts.length - 1];
+        countryName = countryName.trim();
+        this.country = countryName;
+    }
 }
