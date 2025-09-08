@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Class that contains the main endpoint of the API that receives and returns the information
  */
+@CrossOrigin(origins = "http://localhost:5500")
 @RestController
 @RequestMapping("/temperatures")
 public class DayTemperatureController {
