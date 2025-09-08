@@ -17,8 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class TemperatureResponseDTO {
 
-    private String country;
     private String city;
+    private String country;
 
     private List<DayTemperatureDTO> temperatures;
 

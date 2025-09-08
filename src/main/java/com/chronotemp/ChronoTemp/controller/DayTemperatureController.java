@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Class that contains the main endpoint of the API that receives and returns the information
  */
-@CrossOrigin(origins = "http://localhost:5500")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/temperatures")
 public class DayTemperatureController {
@@ -59,7 +59,8 @@ public class DayTemperatureController {
             CoordinatesDTO coordinatesDTO = coordinatesService.getCoordinates(city, country).block();
 
             // Create an object to pass al the arguments to the TemperatureService
-            TemperatureRequestDTO temperatureRequestDTO = new TemperatureRequestDTO(city, coordinatesDTO.getCountry(), coordinatesDTO, dateRangeDTO.getStartDate(), dateRangeDTO.getEndDate());
+            TemperatureRequestDTO temperatureRequestDTO = new TemperatureRequestDTO(city, coordinatesDTO.getCountry(),
+                    coordinatesDTO, dateRangeDTO.getStartDate(), dateRangeDTO.getEndDate());
 
             //Response obtained with the temperatureService
             return temperatureService.getTemperatureByCoordinates(temperatureRequestDTO);
